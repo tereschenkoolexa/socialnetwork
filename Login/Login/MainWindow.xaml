@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="450"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.RowSpan="2" Grid.ColumnSpan="3" Background="DarkGray"/>
+        <Label Grid.Column="1" Grid.Row="1" Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="White"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="Login"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Text="Password"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="Sing in" FontSize="20" Foreground="White" Background="DarkGray"/>
+        <Button Grid.Column="1" Grid.Row="5" Content="Sing up" FontSize="20" Foreground="White" Background="DarkGray"/>
+        <Label Grid.Row="6" Grid.ColumnSpan="3" Background="DarkGray"/>
     </Grid>
 </Window>
