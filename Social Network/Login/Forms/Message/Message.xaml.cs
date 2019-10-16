@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Login
+namespace UI
 {
     /// <summary>
     /// Interaction logic for Message.xaml

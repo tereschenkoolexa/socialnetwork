@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Login.Forms
+namespace UI.Forms
 {
     /// <summary>
     /// Interaction logic for SingUp.xaml

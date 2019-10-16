@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Entities
 {
-    [Table("Users")]
-    public class User
+    [Table("Messages")]
+    public class Message
     {
-        [Key]
+
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Context { get; set; }
 
-        public string Password { get; set; }
+        [ForeignKey("UserOf")]
+        public int IdUser { get; set; }
 
-        public string Gmail { get; set; }
+        public User UserOf { get; set; }
 
     }
 }
