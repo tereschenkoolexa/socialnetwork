@@ -14,10 +14,17 @@ namespace API.Entities
 
         public string Context { get; set; }
 
+
+
         [ForeignKey("UserOf")]
         public int IdUser { get; set; }
 
-        public User UserOf { get; set; }
+        public virtual User UserOf { get; set; }
+
+        [ForeignKey("ChatOf")]
+        public int IdChat { get; set; }
+
+        public virtual Chat ChatOf { get; set; }
 
     }
 }

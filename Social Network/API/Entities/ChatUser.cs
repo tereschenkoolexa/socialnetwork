@@ -7,25 +7,17 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
-    [Table("Walls")]
-    public class Wall
+    [Table("ChatUsers")]
+    public class ChatUser
     {
 
         [Key,ForeignKey("UserOf")]
         public int IdUser { get; set; }
-
         public virtual User UserOf { get; set; }
 
-        public string ImageAvatar { get; set; }
-
-        public int Age { get; set; }
-
-        public string City { get; set; }
-
-        public string Country { get; set; }
-
-        public string Status { get; set; }
-
+        [Key,ForeignKey("ChatOf")]
+        public int IdChat { get; set; }
+        public virtual Chat ChatOf { get; set; }
 
     }
 }

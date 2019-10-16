@@ -30,6 +30,17 @@
         <Label Grid.ColumnSpan="4" Background="Gray"/>
         <Label Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="DarkGray"/>
         <Label Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White"/>
-        <Label Grid.Row="3" Grid.ColumnSpan="4" Background="Gray"/>
+
+        <Image Grid.Column="1" Grid.Row="1"/>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+
+            <Label Grid.Row="3" Grid.ColumnSpan="4" Background="Gray"/>
     </Grid>
 </Window>
