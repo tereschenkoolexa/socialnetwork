@@ -22,12 +22,5 @@ namespace API.Entities
         
         public virtual ICollection<ChatUser> ChatUsers { get; set; }
 
-        public virtual ICollection<ChatUser> ChatUsers { get; set; }
-
-        [ForeignKey("WallOf")]
-        public int IdWall { get; set; }
-
-        public virtual Wall WallOf { get; set; }
-
     }
 }

@@ -11,11 +11,11 @@ namespace API.Entities
     public class ChatUser
     {
 
-        [Key,ForeignKey("UserOf")]
+        [Key,ForeignKey("UserOf"), Column(Order = 1)]
         public int IdUser { get; set; }
         public virtual User UserOf { get; set; }
 
-        [Key,ForeignKey("ChatOf")]
+        [Key,ForeignKey("ChatOf"), Column(Order = 2)]
         public int IdChat { get; set; }
         public virtual Chat ChatOf { get; set; }
 
