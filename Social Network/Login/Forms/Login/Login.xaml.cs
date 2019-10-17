@@ -25,5 +25,12 @@ namespace UI
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            Wall WindowProg = new Wall();
+            WindowProg.Show();
+
+        }
     }
 }

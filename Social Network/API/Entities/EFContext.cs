@@ -19,11 +19,11 @@ namespace API.Entities
             modelBuilder.Entity<ChatUser>()
                 .HasKey(t => new { t.IdChat, t.IdUser });
         }
-        DbSet<Chat> Chats { get; set; }
-        DbSet<ChatUser> ChatUsers { get; set; }
-        DbSet<Message> Messages { get; set; }
-        DbSet<User> Users { get; set; }
-        DbSet<Wall> Walls { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
+        public virtual DbSet<ChatUser> ChatUsers { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Wall> Walls { get; set; }
 
     }
 }

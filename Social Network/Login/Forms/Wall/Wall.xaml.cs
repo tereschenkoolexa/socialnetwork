@@ -22,6 +22,9 @@ namespace UI
         public Wall()
         {
             InitializeComponent();
+
+
+
         }
     }
 }
