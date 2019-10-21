@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Login.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,22 +23,24 @@ namespace UI
     /// </summary>
     public partial class Wall : Window
     {
-        public Wall()
+        public Wall(int id)
         {
             InitializeComponent();
-
-            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/users");
+           
+            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/user");
             myRequest.Method = "GET";
             myRequest.ContentType = "application/json";
-
-            WebResponse wr = myRequest.GetResponse();
-            using (Stream streamResponse = wr.GetResponseStream())
+            try
             {
-                StreamReader reader = new StreamReader(streamResponse);
-                string responseFromServer = reader.ReadToEnd();
-                List<TelesukViewModel> list = JsonConvert.DeserializeObject<List<TelesukViewModel>>(responseFromServer);
+                WebResponse wr = myRequest.GetResponse();
+                
 
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Не правильнi данi");
+            }
+
 
         }
     }

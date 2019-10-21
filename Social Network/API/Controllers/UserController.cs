@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
+using API.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,15 +25,33 @@ namespace API.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        [HttpGet("users")]
-        public ContentResult Get()
+        [HttpGet]
+        public IActionResult Get(int id)
         {
+            foreach (var user in _context.Users.ToList())
+            {
+                if (user.Id == id)
+                {
+                    string json = JsonConvert.SerializeObject(user);
+                    return Content(json, "application/json");
+                }
+            }
+                return BadRequest();
+        }
 
-            List<User> users = _context.Users.ToList();
-            string json = JsonConvert.SerializeObject(users);
+        // POST api/user
+        [HttpPost("login")]
+        public IActionResult Login([FromBody]UserModel model)
+        {
+            foreach (var user in _context.Users.ToList())
+            {
+                if(user.Gmail==model.Gmail && user.Password==model.Password)
+                {
+                    return Ok(user.Id);
+                }
+            }
 
-            return Content(json, "application/json");
-
+            return BadRequest();
         }
 
         [HttpPost]

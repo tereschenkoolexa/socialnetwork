@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Login.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,8 +32,34 @@ namespace UI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            Wall WindowProg = new Wall();
-            WindowProg.Show();
+            UserModel userModel = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text};
+            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/user/login");
+            myRequest.Method = "POST";
+            myRequest.ContentType = "application/json";
+            using(StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))
+            {
+                writer.Write(JsonConvert.SerializeObject(userModel));
+            }
+            try
+            {
+                WebResponse wr = myRequest.GetResponse();
+                int id;
+                using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+                {
+                    id = int.Parse(reader.ReadToEnd());
+                }
+
+                Wall WindowProg = new Wall(id);
+                WindowProg.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не правильнi данi");
+            }
+           
+
+
+
 
         }
     }
