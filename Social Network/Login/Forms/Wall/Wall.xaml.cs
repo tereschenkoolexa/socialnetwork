@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +26,18 @@ namespace UI
         {
             InitializeComponent();
 
+            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/users");
+            myRequest.Method = "GET";
+            myRequest.ContentType = "application/json";
 
+            WebResponse wr = myRequest.GetResponse();
+            using (Stream streamResponse = wr.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(streamResponse);
+                string responseFromServer = reader.ReadToEnd();
+                List<TelesukViewModel> list = JsonConvert.DeserializeObject<List<TelesukViewModel>>(responseFromServer);
+
+            }
 
         }
     }
