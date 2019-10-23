@@ -51,12 +51,13 @@ namespace UI
 
                 Wall WindowProg = new Wall(id);
                 WindowProg.Show();
+                this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Не правильнi данi");
             }
-           
+
 
 
 

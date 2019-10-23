@@ -33,8 +33,8 @@
         <Label Grid.Column="1" Grid.Row="1" Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="White"/>
         <TextBox Grid.Column="1" Grid.Row="2" Text="Login" Foreground="White" Name="LoginTextBox"/>
         <TextBox Grid.Column="1" Grid.Row="3" Text="Password" Foreground="White" Name="PasswordTextBox"/>
-        <Button Grid.Column="1" Grid.Row="4" Content="Sing in" FontSize="20" Foreground="White" Background="Gray" Click="Button_Click"/>
-        <Button Grid.Column="1" Grid.Row="5" Content="Sing up" FontSize="20" Foreground="White" Background="Gray"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="Sign in" FontSize="20" Foreground="White" Background="Gray" Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="5" Content="Sign up" FontSize="20" Foreground="White" Background="Gray"/>
         <Label Grid.Row="6" Grid.ColumnSpan="3" Background="Gray"/>
     </Grid>
 </Window>

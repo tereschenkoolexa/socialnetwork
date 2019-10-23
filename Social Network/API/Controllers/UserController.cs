@@ -25,7 +25,7 @@ namespace API.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        [HttpGet]
+        [HttpGet("get/{id}")]
         public IActionResult Get(int id)
         {
             foreach (var user in _context.Users.ToList())

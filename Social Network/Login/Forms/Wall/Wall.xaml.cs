@@ -27,18 +27,46 @@ namespace UI
         {
             InitializeComponent();
            
-            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/user");
-            myRequest.Method = "GET";
-            myRequest.ContentType = "application/json";
+            HttpWebRequest myRequestUser = WebRequest.CreateHttp($"https://localhost:44359/api/user/get/{id}");
+            myRequestUser.Method = "GET";
+            myRequestUser.ContentType = "application/json";
             try
             {
-                WebResponse wr = myRequest.GetResponse();
-                
+                WebResponse wr = myRequestUser.GetResponse();
+                UserModel userModel = new UserModel();
+                using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+                {
+                    string responseFromServer = reader.ReadToEnd();
+                    userModel = JsonConvert.DeserializeObject<UserModel>(responseFromServer);
+                }
+                FirstAndSecondNameTextBox.Content = userModel.Name;
 
             }
             catch (Exception)
             {
-                MessageBox.Show("Не правильнi данi");
+                MessageBox.Show("");
+            }
+            HttpWebRequest myRequestWall = WebRequest.CreateHttp($"https://localhost:44359/api/wall/get/{id}");
+            myRequestWall.Method = "GET";
+            myRequestWall.ContentType = "application/json";
+            try
+            {
+                WebResponse wr = myRequestWall.GetResponse();
+                WallModel wallModel = new WallModel();
+                using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+                {
+                    string responseFromServer = reader.ReadToEnd();
+                    wallModel = JsonConvert.DeserializeObject<WallModel>(responseFromServer);
+                }
+                StatusTextBox.Content = wallModel.Status;
+                AgeLabel.Content = wallModel.Age;
+                CityLabel.Content = wallModel.City;
+                CountryLabel.Content = wallModel.Country;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("");
             }
 
 

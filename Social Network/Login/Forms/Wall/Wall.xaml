@@ -42,8 +42,8 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-                <Label Grid.Column="2" Name="FirstAndSecondName" Foreground="White" FontSize="28" Content="Name Name"/>
-                <Label Grid.Row="1" Name="Status" Foreground="White" Content="Status"/>
+                <Label Grid.Column="2" Name="FirstAndSecondNameTextBox" Foreground="White" FontSize="28" Content="Name Name"/>
+                <Label Grid.Row="1" Name="StatusTextBox" Foreground="White" Content="Status"/>
             <Label Grid.Row="3" Name="Description" Foreground="White" Content="Description"/>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -54,9 +54,9 @@
                 <Label Content="Age" Foreground="White"/>
                 <Label Grid.Column="1" Content="City" Foreground="White"/>
                 <Label Grid.Column="2" Content="Country" Foreground="White"/>
-                <Label Content="Age" Foreground="White" HorizontalAlignment="Right"/>
-                <Label Grid.Column="1" Content="City" Foreground="White" HorizontalAlignment="Right"/>
-                <Label Grid.Column="2" Content="Country" Foreground="White" HorizontalAlignment="Right"/>
+                <Label Name="AgeLabel" Content="Age" Foreground="White" HorizontalAlignment="Right"/>
+                <Label Name="CityLabel" Grid.Column="1" Content="City" Foreground="White" HorizontalAlignment="Right"/>
+                <Label Name="CountryLabel" Grid.Column="2" Content="Country" Foreground="White" HorizontalAlignment="Right"/>
             </Grid>
         </Grid>
 
