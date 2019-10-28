@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Login.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +26,39 @@ namespace UI.Forms
         public SingUp()
         {
             InitializeComponent();
+        }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            UserModel userModelSignUp = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text, Name = NameTextBox.Text };
+            HttpWebRequest myRequestSignUp = WebRequest.CreateHttp("http://localhost:49617/api/user/signup");
+            myRequestSignUp.Method = "POST";
+            myRequestSignUp.ContentType = "application/json";
+            using (StreamWriter writer = new StreamWriter(myRequestSignUp.GetRequestStream()))
+            {
+                writer.Write(JsonConvert.SerializeObject(userModelSignUp));
+            }
+
+            //UserModel userModel = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text };
+            //HttpWebRequest myRequest = WebRequest.CreateHttp("http://localhost:49617/api/user/login");
+            //myRequest.Method = "POST";
+            //myRequest.ContentType = "application/json";
+            //using (StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))
+            //{
+            //    writer.Write(JsonConvert.SerializeObject(userModel));
+            //}
+            //    WebResponse wr = myRequest.GetResponse();
+            //    int id;
+            //    using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+            //    {
+            //        id = int.Parse(reader.ReadToEnd());
+            //    }
+
+            //    Wall WindowProg = new Wall(id);
+            //    WindowProg.Show();
+            //    this.Close();
+
         }
     }
 }

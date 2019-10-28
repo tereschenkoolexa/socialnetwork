@@ -27,7 +27,7 @@ namespace UI
         {
             InitializeComponent();
            
-            HttpWebRequest myRequestUser = WebRequest.CreateHttp($"https://localhost:44359/api/user/get/{id}");
+            HttpWebRequest myRequestUser = WebRequest.CreateHttp($"http://localhost:49617/api/user/get/{id}");
             myRequestUser.Method = "GET";
             myRequestUser.ContentType = "application/json";
             try
@@ -46,7 +46,7 @@ namespace UI
             {
                 MessageBox.Show("");
             }
-            HttpWebRequest myRequestWall = WebRequest.CreateHttp($"https://localhost:44359/api/wall/get/{id}");
+            HttpWebRequest myRequestWall = WebRequest.CreateHttp($"http://localhost:49617/api/wall/get/{id}");
             myRequestWall.Method = "GET";
             myRequestWall.ContentType = "application/json";
             try

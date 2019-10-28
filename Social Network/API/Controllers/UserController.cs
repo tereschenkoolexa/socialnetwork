@@ -54,6 +54,19 @@ namespace API.Controllers
             return BadRequest();
         }
 
+
+        [HttpPost("signup")]
+        public IActionResult Signup([FromBody]UserModel model)
+        {
+
+            _context.Add(new User { 
+                Gmail = model.Gmail, 
+                Name = model.Name, 
+                Password = model.Password });
+            return Ok();
+
+        }
+
         [HttpPost]
         public void Post([FromBody] string value)
         {

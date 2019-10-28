@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UI.Forms;
 
 namespace UI
 {
@@ -33,7 +34,7 @@ namespace UI
         {
 
             UserModel userModel = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text};
-            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/user/login");
+            HttpWebRequest myRequest = WebRequest.CreateHttp("http://localhost:49617/api/user/login");
             myRequest.Method = "POST";
             myRequest.ContentType = "application/json";
             using(StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))
@@ -62,6 +63,13 @@ namespace UI
 
 
 
+        }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            SingUp WindowProg = new SingUp();
+            WindowProg.Show();
+            this.Close();
         }
     }
 }
