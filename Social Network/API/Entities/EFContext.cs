@@ -19,6 +19,10 @@ namespace API.Entities
             modelBuilder.Entity<ChatUser>()
                 .HasKey(t => new { t.IdChat, t.IdUser });
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<ChatUser> ChatUsers { get; set; }
         public virtual DbSet<Message> Messages { get; set; }

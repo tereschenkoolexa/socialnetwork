@@ -23,11 +23,12 @@ namespace UI
     /// </summary>
     public partial class Wall : Window
     {
+        int _id;
         public Wall(int id)
         {
             InitializeComponent();
-           
-            HttpWebRequest myRequestUser = WebRequest.CreateHttp($"http://localhost:49617/api/user/get/{id}");
+            _id = id;
+            HttpWebRequest myRequestUser = WebRequest.CreateHttp($"https://localhost:44359/api/user/get/{id}");
             myRequestUser.Method = "GET";
             myRequestUser.ContentType = "application/json";
             try
@@ -42,11 +43,11 @@ namespace UI
                 FirstAndSecondNameTextBox.Content = userModel.Name;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show(ex.ToString());
             }
-            HttpWebRequest myRequestWall = WebRequest.CreateHttp($"http://localhost:49617/api/wall/get/{id}");
+            HttpWebRequest myRequestWall = WebRequest.CreateHttp($"https://localhost:44359/api/wall/get/{id}");
             myRequestWall.Method = "GET";
             myRequestWall.ContentType = "application/json";
             try
@@ -64,12 +65,19 @@ namespace UI
                 CountryLabel.Content = wallModel.Country;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show("У вас Бан");
             }
 
 
+        }
+
+        private void ButtonMessage_Click(object sender, RoutedEventArgs e)
+        {
+            Message WindowProg = new Message(_id);
+            WindowProg.Show();
+            this.Close();
         }
     }
 }

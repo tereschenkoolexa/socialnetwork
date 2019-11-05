@@ -34,7 +34,7 @@ namespace UI
         {
 
             UserModel userModel = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text};
-            HttpWebRequest myRequest = WebRequest.CreateHttp("http://localhost:49617/api/user/login");
+            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/user/login");
             myRequest.Method = "POST";
             myRequest.ContentType = "application/json";
             using(StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))

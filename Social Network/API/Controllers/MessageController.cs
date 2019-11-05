@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
+using API.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -21,6 +23,24 @@ namespace API.Controllers
         {
             _context = context;
             _appEnvironment = appEnvironment;
+        }
+
+        [HttpGet("getChat/{id}")]
+        public IActionResult Get(int id)
+        {
+            List<ChatModel> chatModels = new List<ChatModel>();
+            foreach (var chat in _context.ChatUsers.Where(t=>t.IdUser==id).ToList())
+            {
+                ChatModel chatModel = new ChatModel()
+                {
+                    Id = chat.ChatOf.Id,
+                    Name = chat.ChatOf.Name
+                };
+                chatModels.Add(chatModel);
+            }
+            string json = JsonConvert.SerializeObject(chatModels);
+
+            return Content(json, "application/json");
         }
 
     }

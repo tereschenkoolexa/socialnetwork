@@ -32,32 +32,33 @@ namespace UI.Forms
         {
 
             UserModel userModelSignUp = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text, Name = NameTextBox.Text };
-            HttpWebRequest myRequestSignUp = WebRequest.CreateHttp("http://localhost:49617/api/user/signup");
+            HttpWebRequest myRequestSignUp = WebRequest.CreateHttp("https://localhost:44359/api/user/signup");
             myRequestSignUp.Method = "POST";
             myRequestSignUp.ContentType = "application/json";
             using (StreamWriter writer = new StreamWriter(myRequestSignUp.GetRequestStream()))
             {
                 writer.Write(JsonConvert.SerializeObject(userModelSignUp));
             }
+            WebResponse wrSignUp = myRequestSignUp.GetResponse();
 
-            //UserModel userModel = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text };
-            //HttpWebRequest myRequest = WebRequest.CreateHttp("http://localhost:49617/api/user/login");
-            //myRequest.Method = "POST";
-            //myRequest.ContentType = "application/json";
-            //using (StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))
-            //{
-            //    writer.Write(JsonConvert.SerializeObject(userModel));
-            //}
-            //    WebResponse wr = myRequest.GetResponse();
-            //    int id;
-            //    using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
-            //    {
-            //        id = int.Parse(reader.ReadToEnd());
-            //    }
+            UserModel userModel = new UserModel() { Gmail = LoginTextBox.Text, Password = PasswordTextBox.Text };
+            HttpWebRequest myRequest = WebRequest.CreateHttp("https://localhost:44359/api/user/login");
+            myRequest.Method = "POST";
+            myRequest.ContentType = "application/json";
+            using (StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))
+            {
+                writer.Write(JsonConvert.SerializeObject(userModel));
+            }
+            WebResponse wr = myRequest.GetResponse();
+            int id;
+            using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+            {
+                id = int.Parse(reader.ReadToEnd());
+            }
 
-            //    Wall WindowProg = new Wall(id);
-            //    WindowProg.Show();
-            //    this.Close();
+            Wall WindowProg = new Wall(id);
+            WindowProg.Show();
+            this.Close();
 
         }
     }

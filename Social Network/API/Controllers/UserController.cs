@@ -63,6 +63,7 @@ namespace API.Controllers
                 Gmail = model.Gmail, 
                 Name = model.Name, 
                 Password = model.Password });
+            _context.SaveChanges();
             return Ok();
 
         }
