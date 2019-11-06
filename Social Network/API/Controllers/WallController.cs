@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
+using API.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,16 @@ namespace API.Controllers
             {
                 if (wall.IdUser == id)
                 {
-                    string json = JsonConvert.SerializeObject(wall);
+                    WallModel model = new WallModel()
+                    {
+                        Age = wall.Age,
+                        City = wall.City,
+                        Country = wall.Country,
+                        Status = wall.Status,
+                        ImageAvatar = wall.ImageAvatar,
+
+                    };
+                    string json = JsonConvert.SerializeObject(model);
                     return Content(json, "application/json");
                 }
             }

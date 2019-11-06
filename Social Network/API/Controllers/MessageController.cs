@@ -43,5 +43,23 @@ namespace API.Controllers
             return Content(json, "application/json");
         }
 
+        [HttpGet("getMessage/{id}")]
+        public IActionResult GetMessage(int id)
+        {
+            List<MessageModel> messageModels = new List<MessageModel>();
+            foreach (var message in _context.Messages.Where(t => t.IdUser == id).ToList())
+            {
+                MessageModel messageModel = new MessageModel()
+                {
+                    Context = message.Context,
+                    Id = message.Id
+                };
+                messageModels.Add(messageModel);
+            }
+            string json = JsonConvert.SerializeObject(messageModels);
+
+            return Content(json, "application/json");
+        }
+
     }
 }

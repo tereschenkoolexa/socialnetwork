@@ -40,12 +40,19 @@ namespace UI
                     string responseFromServer = reader.ReadToEnd();
                     listChatModel = JsonConvert.DeserializeObject<List<ChatModel>>(responseFromServer);
                 }
-                ListViewChat.SelectedValue = listChatModel;
+                DataGridChats.ItemsSource = listChatModel;
                 }
             catch(Exception ex)
             { MessageBox.Show(ex.ToString()); }
             }
         private void ButtonMessage_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+        }
+
+        private void DataGridChats_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
 

@@ -32,7 +32,13 @@ namespace API.Controllers
             {
                 if (user.Id == id)
                 {
-                    string json = JsonConvert.SerializeObject(user);
+                    UserModel model = new UserModel()
+                    {
+                        Gmail = user.Gmail,
+                        Name = user.Name,
+                        Password = user.Password
+                    };
+                    string json = JsonConvert.SerializeObject(model);
                     return Content(json, "application/json");
                 }
             }
