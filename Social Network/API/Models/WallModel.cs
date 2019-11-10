@@ -8,6 +8,8 @@ namespace API.Models
     public class WallModel
     {
 
+        public int IdUser { get; set; }
+
         public string ImageAvatar { get; set; }
 
         public int Age { get; set; }

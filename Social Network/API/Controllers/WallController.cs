@@ -48,5 +48,20 @@ namespace API.Controllers
             return BadRequest();
         }
 
+        [HttpPost("newwall")]
+        public IActionResult NewWall([FromBody]WallModel model)
+        {
+
+            _context.Add(new Wall
+            {
+                Age = model.Age,
+                Country = model.Country,
+                City = model.City,
+                IdUser = model.IdUser
+            });
+            _context.SaveChanges();
+            return Ok();
+
+        }
     }
 }
