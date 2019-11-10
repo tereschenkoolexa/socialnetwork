@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.Forms"
         mc:Ignorable="d"
-    Title="Sign Up" Height="450" Width="450"
+    Title="Sign Up" Height="450" Width="900"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -27,14 +27,19 @@
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
             <ColumnDefinition Width="1.5*"></ColumnDefinition>
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="3" Background="DarkGray"/>
-        <Label Grid.RowSpan="2" Grid.ColumnSpan="3" Background="Gray"/>
-        <Label Grid.Column="1" Grid.Row="1" Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="White"/>
+        <Label Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="5" Background="DarkGray"/>
+        <Label Grid.RowSpan="2" Grid.ColumnSpan="5" Background="Gray"/>
+        <Label Grid.Column="2" Grid.Row="1" Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="White"/>
         <TextBox Grid.Column="1" Grid.Row="2" Text="Login" Foreground="White" Name="LoginTextBox"/>
         <TextBox Grid.Column="1" Grid.Row="3" Text="Password" Foreground="White" Name="PasswordTextBox"/>
         <TextBox Grid.Column="1" Grid.Row="4" Text="Name"  Foreground="White" Name="NameTextBox"/>
-        <Button Grid.Column="1" Grid.Row="5" Content="Sign up" FontSize="20" Foreground="White" Background="Gray" Name="SignUpButton" Click="SignUpButton_Click"/>
-        <Label Grid.Row="6" Grid.ColumnSpan="3" Background="Gray"/>
+        <TextBox Grid.Column="3" Grid.Row="2" Text="Age" Foreground="White" Name="AgeTextBox"/>
+        <TextBox Grid.Column="3" Grid.Row="3" Text="City" Foreground="White" Name="CityTextBox"/>
+        <TextBox Grid.Column="3" Grid.Row="4" Text="Country" Foreground="White" Name="CountryTextBox"/>
+        <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5" Content="Sign up" FontSize="20" Foreground="White" Background="Gray" Name="SignUpButton" Click="SignUpButton_Click"/>
+        <Label Grid.Row="6" Grid.ColumnSpan="5" Background="Gray"/>
     </Grid>
 </Window>

@@ -59,7 +59,7 @@ namespace UI
                     string responseFromServer = reader.ReadToEnd();
                     wallModel = JsonConvert.DeserializeObject<WallModel>(responseFromServer);
                 }
-                StatusTextBox.Content = wallModel.Status;
+                StatusTextBox.Text = wallModel.Status;
                 AgeLabel.Content = wallModel.Age;
                 CityLabel.Content = wallModel.City;
                 CountryLabel.Content = wallModel.Country;
