@@ -61,5 +61,33 @@ namespace API.Controllers
             return Content(json, "application/json");
         }
 
+        [HttpPost("PostMessage")]
+        public IActionResult PostMessage([FromBody]MessageModel model)
+        {
+
+            _context.Add(new Message
+            {
+                Context = model.Context,
+
+            });
+            _context.SaveChanges();
+            return Ok();
+
+        }
+
+        [HttpPost("PostChat")]
+        public IActionResult PostChat([FromBody]ChatModel model)
+        {
+
+            _context.Add(new Chat
+            {
+                Name = model.Name
+
+            });
+            _context.SaveChanges();
+            return Ok();
+
+        }
+
     }
 }

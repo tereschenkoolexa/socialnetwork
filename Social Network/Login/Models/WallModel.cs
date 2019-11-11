@@ -9,7 +9,7 @@ namespace Login.Models
     public class WallModel
     {
 
-        public string ImageAvatar { get; set; }
+        public int Id { get; set; }
 
         public int Age { get; set; }
 

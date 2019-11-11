@@ -56,6 +56,21 @@ namespace UI.Forms
                 id = int.Parse(reader.ReadToEnd());
             }
 
+            WallModel wallModel = new WallModel()
+            {
+                Age = int.Parse(AgeTextBox.Text),
+                City = CityTextBox.Text,
+                Country = CountryTextBox.Text,
+                Id = id
+            };
+            HttpWebRequest myRequestNewWall = WebRequest.CreateHttp("https://localhost:44359/api/wall/newwwall");
+            myRequestNewWall.Method = "POST";
+            myRequestNewWall.ContentType = "application/json";
+            WebResponse wrNewWall = myRequestNewWall.GetResponse();
+            using (StreamWriter writer = new StreamWriter(myRequestSignUp.GetRequestStream()))
+            {
+                writer.Write(JsonConvert.SerializeObject(wallModel));
+            }
             Wall WindowProg = new Wall(id);
             WindowProg.Show();
             this.Close();

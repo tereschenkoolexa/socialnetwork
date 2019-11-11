@@ -18,6 +18,7 @@
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -26,13 +27,13 @@
         <Label Grid.ColumnSpan="4" Background="Gray"/>
         <Label Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="DarkGray"/>
         <Label Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" Grid.ColumnSpan="2"/>
-        <Button Grid.Row="1" Content="Message" Foreground="White" Name="ButtonMessage" Background="Gray" Click="ButtonMessage_Click" Margin="0,177,0,159"/>
-        <Button Grid.Row="1" Content="Wall" Foreground="White" Name="ButtonWall" Background="Gray" Click="ButtonMessage_Click" Margin="0,59,0,278"/>
-        <Button Grid.Row="1" Content="Friends" Foreground="White" Name="ButtonFriends" Background="Gray" Margin="0,118,0,219" />
-        <Button Grid.Row="1" Content="Exit" Foreground="White" Name="ButtonExit" Background="Gray" Margin="0,278,0,59" />
+        <Button Grid.Row="1" Content="Message" Foreground="White" Name="ButtonMessage" Background="Gray" Click="ButtonMessage_Click" Margin="0,59,0,254"/>
+        <Button Grid.Row="1" Content="Wall" Foreground="White" Name="ButtonWall" Background="Gray" Click="ButtonMessage_Click" Margin="0,177,0,136"/>
+        <Button Grid.Row="1" Content="Friends" Foreground="White" Name="ButtonFriends" Background="Gray" Margin="0,118,0,195"/>
+        <Button Grid.Row="1" Content="Exit" Foreground="White" Name="ButtonExit" Background="Gray" Margin="0,279,0,34"/>
 
-
-
+        <TextBox Grid.Row="2" Grid.Column="1" Foreground="White" Margin="0,0,139,0"/>
+        <Button Content="Mess" Grid.Row="2" Grid.Column="1" Foreground="White" Background="Gray" Margin="453,0,0,0" Height="Auto"/>
         <DataGrid IsReadOnly="True" AutoGenerateColumns="False" Name="DataGridChats" MouseDoubleClick="DataGridChats_MouseDoubleClick"
                   CanUserAddRows="False" Grid.Row="1" Grid.Column="1" Background="DarkGray" Foreground="White">
             <DataGrid.Columns>
@@ -40,6 +41,6 @@
                 <DataGridTextColumn Binding="{Binding Message}" Header="Message" Width="500"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="Gray"/>
+        <Label Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="Gray"/>
     </Grid>
 </Window>

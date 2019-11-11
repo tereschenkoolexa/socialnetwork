@@ -47,6 +47,7 @@ namespace UI
             {
                 MessageBox.Show(ex.ToString());
             }
+
             HttpWebRequest myRequestWall = WebRequest.CreateHttp($"https://localhost:44359/api/wall/get/{id}");
             myRequestWall.Method = "GET";
             myRequestWall.ContentType = "application/json";
@@ -69,6 +70,7 @@ namespace UI
             {
                 MessageBox.Show("У вас Бан");
             }
+
 
 
         }

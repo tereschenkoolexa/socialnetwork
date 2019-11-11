@@ -52,7 +52,7 @@ namespace API.Controllers
         public IActionResult NewWall([FromBody]WallModel model)
         {
 
-            _context.Add(new Wall
+            _context.Walls.Add(new Wall
             {
                 Age = model.Age,
                 Country = model.Country,
