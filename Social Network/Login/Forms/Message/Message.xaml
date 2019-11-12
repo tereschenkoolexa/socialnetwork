@@ -32,15 +32,9 @@
         <Button Grid.Row="1" Content="Friends" Foreground="White" Name="ButtonFriends" Background="Gray" Margin="0,118,0,195"/>
         <Button Grid.Row="1" Content="Exit" Foreground="White" Name="ButtonExit" Background="Gray" Margin="0,279,0,34"/>
 
+        <TextBox Name="ChatTextBox" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" Background="White"/>
         <TextBox Grid.Row="2" Grid.Column="1" Foreground="White" Margin="0,0,139,0"/>
         <Button Content="Mess" Grid.Row="2" Grid.Column="1" Foreground="White" Background="Gray" Margin="453,0,0,0" Height="Auto"/>
-        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" Name="DataGridChats" MouseDoubleClick="DataGridChats_MouseDoubleClick"
-                  CanUserAddRows="False" Grid.Row="1" Grid.Column="1" Background="DarkGray" Foreground="White">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name"/>
-                <DataGridTextColumn Binding="{Binding Message}" Header="Message" Width="500"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <Label Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="Gray"/>
     </Grid>
 </Window>

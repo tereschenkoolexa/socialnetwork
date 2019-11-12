@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
+using API.Hubs;
+using API.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +30,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+            services.AddSignalR();
             services.AddDbContext<EFContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Connection")));
         }
@@ -47,6 +49,12 @@ namespace API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChutHub>("/chat");
+            });
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Login.Models;
+using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNetCore.SignalR.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,9 +25,29 @@ namespace UI
     /// </summary>
     public partial class Message : Window
     {
+
+        private HubConnection _hubConnection;
+
+        private async void Connect(int id)
+        {
+            _hubConnection = new HubConnectionBuilder().WithUrl("https://localhost:44359/chat").Build();
+            try
+            {
+                await _hubConnection.StartAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            await _hubConnection.InvokeAsync("Connect", id);
+        }
+
         public Message(int id)
         {
             InitializeComponent();
+
+            Connect(id);
 
             HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/getchat/{id}");
             myRequest.Method = "GET";
@@ -40,7 +62,6 @@ namespace UI
                     string responseFromServer = reader.ReadToEnd();
                     listChatModel = JsonConvert.DeserializeObject<List<ChatModel>>(responseFromServer);
                 }
-                DataGridChats.ItemsSource = listChatModel;
                 }
             catch(Exception ex)
             { MessageBox.Show(ex.ToString()); }
