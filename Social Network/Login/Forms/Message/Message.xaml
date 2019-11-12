@@ -34,7 +34,7 @@
 
         <TextBox Name="ChatTextBox" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" Background="White"/>
         <TextBox Grid.Row="2" Grid.Column="1" Foreground="White" Margin="0,0,139,0"/>
-        <Button Content="Mess" Grid.Row="2" Grid.Column="1" Foreground="White" Background="Gray" Margin="453,0,0,0" Height="Auto"/>
+        <Button Content="Mess" Grid.Row="2" Grid.Column="1" Foreground="White" Background="Gray" Margin="453,0,0,0" Height="25" VerticalAlignment="Top" Click="ButtonMessage_Click"/>
         <Label Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="Gray"/>
     </Grid>
 </Window>
