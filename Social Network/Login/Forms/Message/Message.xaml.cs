@@ -80,11 +80,15 @@ namespace UI
         private async void ButtonMessage_Click(object sender, RoutedEventArgs e)
         {
 
-            //MessageModel messageModel = new MessageModel() { IdChat = _idChat, Context = MesstextBox.Text, IdUser  }
+            MessageModel messageModel = new MessageModel() { IdChat = _idChat, Context = MesstextBox.Text, IdUser = _idUser };
             HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/PostMessage");
             myRequest.Method = "POST";
             myRequest.ContentType = "application/json";
-
+            using (StreamWriter writer = new StreamWriter(myRequest.GetRequestStream()))
+            {
+                writer.Write(JsonConvert.SerializeObject(messageModel));
+            }
+            WebResponse wrNewWall = myRequest.GetResponse();
             await _hubConnection.InvokeAsync("sendAll", MesstextBox.Text);
 
         }
