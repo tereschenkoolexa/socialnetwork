@@ -77,9 +77,11 @@ namespace UI
 
         private void ButtonMessage_Click(object sender, RoutedEventArgs e)
         {
-            Message WindowProg = new Message(_id);
+            Chat WindowProg = new Chat(_id);
             WindowProg.Show();
             this.Close();
+
+
         }
     }
 }

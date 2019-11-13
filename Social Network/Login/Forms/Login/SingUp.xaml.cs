@@ -61,16 +61,17 @@ namespace UI.Forms
                 Age = int.Parse(AgeTextBox.Text),
                 City = CityTextBox.Text,
                 Country = CountryTextBox.Text,
-                Id = id
+                IdUser = id
             };
-            HttpWebRequest myRequestNewWall = WebRequest.CreateHttp("https://localhost:44359/api/wall/newwwall");
+            HttpWebRequest myRequestNewWall = WebRequest.CreateHttp("https://localhost:44359/api/wall/newwall");
             myRequestNewWall.Method = "POST";
             myRequestNewWall.ContentType = "application/json";
-            WebResponse wrNewWall = myRequestNewWall.GetResponse();
-            using (StreamWriter writer = new StreamWriter(myRequestSignUp.GetRequestStream()))
+            using (StreamWriter writer = new StreamWriter(myRequestNewWall.GetRequestStream()))
             {
                 writer.Write(JsonConvert.SerializeObject(wallModel));
             }
+            WebResponse wrNewWall = myRequestNewWall.GetResponse();
+
             Wall WindowProg = new Wall(id);
             WindowProg.Show();
             this.Close();

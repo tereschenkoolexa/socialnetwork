@@ -1,5 +1,4 @@
 ﻿using Login.Models;
-using Microsoft.AspNet.SignalR.Client;
 using Microsoft.AspNetCore.SignalR.Client;
 using Newtonsoft.Json;
 using System;
@@ -44,254 +43,52 @@ namespace UI
             {
                 ChatTextBox.Text += message;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }));
 
             await _hubConnection.InvokeAsync("Connect", id);
         }
-
-        public Message(int id)
+        int _idChat, _idUser;
+        public Message(int idC, int idU)
         {
             InitializeComponent();
+            _idChat = idC;
+            _idUser = idU;
+            Connect(idU);
 
-            Connect(id);
-
-            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/getchat/{id}");
+            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/getMessage/{1}");
             myRequest.Method = "GET";
             myRequest.ContentType = "application/json";
-
             WebResponse wr = myRequest.GetResponse();
-            try
-                {
-                List<ChatModel> listChatModel = new List<ChatModel>();
-                using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
-                {
-                    string responseFromServer = reader.ReadToEnd();
-                    listChatModel = JsonConvert.DeserializeObject<List<ChatModel>>(responseFromServer);
-                }
-                }
-            catch(Exception ex)
-            { MessageBox.Show(ex.ToString()); }
+
+            List<MessageModel> listChatModel = new List<MessageModel>();
+            using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+            {
+                string responseFromServer = reader.ReadToEnd();
+                listChatModel = JsonConvert.DeserializeObject<List<MessageModel>>(responseFromServer);
             }
-        private void ButtonMessage_Click(object sender, RoutedEventArgs e)
+
+            
+            foreach (var item in listChatModel)
+            {
+
+                ChatTextBox.Text += item.Context;
+
+
+            }
+        }
+
+        private async void ButtonMessage_Click(object sender, RoutedEventArgs e)
         {
 
+            //MessageModel messageModel = new MessageModel() { IdChat = _idChat, Context = MesstextBox.Text, IdUser  }
+            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/PostMessage");
+            myRequest.Method = "POST";
+            myRequest.ContentType = "application/json";
 
+            await _hubConnection.InvokeAsync("sendAll", MesstextBox.Text);
 
         }
 
-        private async void DataGridChats_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
 
-            await _hubConnection.InvokeAsync("SendAll", "Hello World!");
-
-        }
     }
 }

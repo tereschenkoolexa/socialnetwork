@@ -9,7 +9,7 @@ namespace Login.Models
     public class WallModel
     {
 
-        public int Id { get; set; }
+        public int IdUser { get; set; }
 
         public int Age { get; set; }
 

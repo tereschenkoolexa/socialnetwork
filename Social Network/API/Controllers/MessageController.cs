@@ -47,7 +47,7 @@ namespace API.Controllers
         public IActionResult GetMessage(int id)
         {
             List<MessageModel> messageModels = new List<MessageModel>();
-            foreach (var message in _context.Messages.Where(t => t.IdUser == id).ToList())
+            foreach (var message in _context.Messages.Where(t => t.IdChat == id).ToList())
             {
                 MessageModel messageModel = new MessageModel()
                 {
@@ -68,6 +68,8 @@ namespace API.Controllers
             _context.Add(new Message
             {
                 Context = model.Context,
+                IdChat = model.IdChat,
+                IdUser = model.IdUser
 
             });
             _context.SaveChanges();
