@@ -175,6 +175,9 @@
     <Compile Include="Forms\Friends\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Message\AddChat.xaml.cs">
+      <DependentUpon>AddChat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Message\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Forms\Message\AddChat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\Message\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,6 +236,7 @@
       <DependentUpon>WallFriend.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ChatModel.cs" />
+    <Compile Include="Models\ChatModelAdd.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\WallModel.cs" />

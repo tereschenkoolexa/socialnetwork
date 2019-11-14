@@ -69,6 +69,14 @@ namespace UI
             this.Close();
         }
 
+        private void ButtonChat_Click(object sender, RoutedEventArgs e)
+        {
+            AddChat WindowProg = new AddChat(_idU);
+            WindowProg.Show();
+            this.Close();
+
+        }
+
         private void DataGridChats_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ChatModel chatModel = (ChatModel)DataGridChats.SelectedItem;
