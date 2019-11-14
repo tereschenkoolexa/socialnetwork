@@ -52,7 +52,9 @@ namespace API.Controllers
                 MessageModel messageModel = new MessageModel()
                 {
                     Context = message.Context,
-                    Id = message.Id
+                    Id = message.Id,
+                    IdChat = message.IdChat,
+                    IdUser = message.IdUser
                 };
                 messageModels.Add(messageModel);
             }

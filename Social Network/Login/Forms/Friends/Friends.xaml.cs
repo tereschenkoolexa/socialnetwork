@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Login.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +23,30 @@ namespace UI
     /// </summary>
     public partial class Friends : Window
     {
-        public Friends()
+        public Friends(int id)
         {
+
             InitializeComponent();
+
+            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/user/getusers");
+            myRequest.Method = "GET";
+            myRequest.ContentType = "application/json";
+            WebResponse wr = myRequest.GetResponse();
+            List<UserModel> listFriendsModel = new List<UserModel>();
+            try
+            {
+                using (StreamReader reader = new StreamReader(wr.GetResponseStream()))
+                {
+                    string responseFromServer = reader.ReadToEnd();
+                    listFriendsModel = JsonConvert.DeserializeObject<List<UserModel>>(responseFromServer);
+                }
+                DataGridChats.ItemsSource = listFriendsModel;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

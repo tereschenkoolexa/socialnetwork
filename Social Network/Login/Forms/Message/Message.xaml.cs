@@ -41,8 +41,17 @@ namespace UI
 
             _hubConnection.On<string>("sendAll", new Action<string>((message) =>
             {
-                ChatTextBox.Text += message;
+            HttpWebRequest myRequestUser = WebRequest.CreateHttp($"https://localhost:44359/api/user/get/{id}");
+            myRequestUser.Method = "GET";
+            myRequestUser.ContentType = "application/json";
+            WebResponse wrNameUser = myRequestUser.GetResponse();
+            UserModel userModel = new UserModel();
+                using (StreamReader reader = new StreamReader(wrNameUser.GetResponseStream()))
+                {
+                    string responseFromServer = reader.ReadToEnd();
 
+                }
+            ChatTextBox.Text += "\n" + userModel.Name + " : " + message;
             }));
 
             await _hubConnection.InvokeAsync("Connect", id);
@@ -53,9 +62,9 @@ namespace UI
             InitializeComponent();
             _idChat = idC;
             _idUser = idU;
-            Connect(idU);
+            Connect(_idUser);
 
-            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/getMessage/{1}");
+            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/message/getMessage/{idC}");
             myRequest.Method = "GET";
             myRequest.ContentType = "application/json";
             WebResponse wr = myRequest.GetResponse();
@@ -70,8 +79,20 @@ namespace UI
             
             foreach (var item in listChatModel)
             {
+                int Id_ = item.IdUser;
+                HttpWebRequest myRequestUser = WebRequest.CreateHttp($"https://localhost:44359/api/user/get/{Id_}");
+                myRequestUser.Method = "GET";
+                myRequestUser.ContentType = "application/json";
+                WebResponse wrNameUser = myRequestUser.GetResponse();
+                UserModel userModel = new UserModel();
+                using (StreamReader reader = new StreamReader(wrNameUser.GetResponseStream()))
+                {
+                    string responseFromServer = reader.ReadToEnd();
+                    userModel = JsonConvert.DeserializeObject<UserModel>(responseFromServer);
+                }
 
-                ChatTextBox.Text += item.Context;
+
+                ChatTextBox.Text += "\n" + userModel.Name + " : " + item.Context;
 
 
             }

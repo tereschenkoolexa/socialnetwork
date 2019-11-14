@@ -36,6 +36,7 @@
                   CanUserAddRows="False" Grid.Row="1" Grid.Column="1" Background="DarkGray" Foreground="White">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
             </DataGrid.Columns>
         </DataGrid>
 

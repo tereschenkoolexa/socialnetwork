@@ -28,6 +28,7 @@ namespace API.Controllers
         [HttpGet("get/{id}")]
         public IActionResult Get(int id)
         {
+            
             foreach (var user in _context.Users.ToList())
             {
                 if (user.Id == id)
@@ -38,11 +39,33 @@ namespace API.Controllers
                         Name = user.Name,
                         Password = user.Password
                     };
+                    
                     string json = JsonConvert.SerializeObject(model);
                     return Content(json, "application/json");
                 }
             }
                 return BadRequest();
+        }
+
+        [HttpGet("getusers")]
+        public IActionResult GetUsers()
+        {
+            List<UserModel> userModels = new List<UserModel>();
+            foreach (var user in _context.Users.ToList())
+            {
+
+                    UserModel model = new UserModel()
+                    {
+                        Id = user.Id,
+                        Gmail = user.Gmail,
+                        Name = user.Name,
+                        Password = user.Password
+                    };
+                    userModels.Add(model);
+            }
+            string json = JsonConvert.SerializeObject(userModels);
+            return Content(json, "application/json");
+
         }
 
         // POST api/user

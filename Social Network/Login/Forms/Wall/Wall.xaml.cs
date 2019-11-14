@@ -83,5 +83,12 @@ namespace UI
 
 
         }
+
+        private void ButtonFriends_Click(object sender, RoutedEventArgs e)
+        {
+            Friends WindowProg = new Friends(_id);
+            WindowProg.Show();
+            this.Close();
+        }
     }
 }
