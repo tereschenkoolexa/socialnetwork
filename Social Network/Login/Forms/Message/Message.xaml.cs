@@ -98,6 +98,15 @@ namespace UI
             }
         }
 
+        private void ButtonWall_Click(object sender, RoutedEventArgs e)
+        {
+
+            Wall WindowProg = new Wall(_idUser);
+            WindowProg.Show();
+            this.Close();
+
+        }
+
         private async void ButtonMessage_Click(object sender, RoutedEventArgs e)
         {
 

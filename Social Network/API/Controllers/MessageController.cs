@@ -47,20 +47,22 @@ namespace API.Controllers
         public IActionResult GetMessage(int id)
         {
             List<MessageModel> messageModels = new List<MessageModel>();
-            foreach (var message in _context.Messages.Where(t => t.IdChat == id).ToList())
-            {
-                MessageModel messageModel = new MessageModel()
-                {
-                    Context = message.Context,
-                    Id = message.Id,
-                    IdChat = message.IdChat,
-                    IdUser = message.IdUser
-                };
-                messageModels.Add(messageModel);
-            }
-            string json = JsonConvert.SerializeObject(messageModels);
 
-            return Content(json, "application/json");
+                    foreach (var message in _context.Messages.Where(t => t.IdChat == id).ToList())
+                    {
+                        MessageModel messageModel = new MessageModel()
+                        {
+                            Context = message.Context,
+                            Id = message.Id,
+                            IdChat = message.IdChat,
+                            IdUser = message.IdUser
+                        };
+                        messageModels.Add(messageModel);
+                    }
+                    string json = JsonConvert.SerializeObject(messageModels);
+
+                    return Content(json, "application/json");
+
         }
 
         [HttpPost("PostMessage")]

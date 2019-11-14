@@ -90,5 +90,12 @@ namespace UI
             WindowProg.Show();
             this.Close();
         }
+
+        private void MessageButton_Click(object sender, RoutedEventArgs e)
+        {
+            Message WindowProg = new Message(_id, _id);
+            WindowProg.Show();
+            this.Close();
+        }
     }
 }
