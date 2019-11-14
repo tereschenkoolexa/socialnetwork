@@ -1,4 +1,5 @@
-﻿using Login.Models;
+﻿using Login.Forms.Wall;
+using Login.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,13 @@ namespace UI
     /// </summary>
     public partial class Friends : Window
     {
+        int _id;
         public Friends(int id)
         {
-
+            _id = id;
             InitializeComponent();
 
-            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/user/getusers");
+            HttpWebRequest myRequest = WebRequest.CreateHttp($"https://localhost:44359/api/user/getusers/{_id}");
             myRequest.Method = "GET";
             myRequest.ContentType = "application/json";
             WebResponse wr = myRequest.GetResponse();
@@ -40,12 +42,24 @@ namespace UI
                     string responseFromServer = reader.ReadToEnd();
                     listFriendsModel = JsonConvert.DeserializeObject<List<UserModel>>(responseFromServer);
                 }
-                DataGridChats.ItemsSource = listFriendsModel;
+                DataGridFriends.ItemsSource = listFriendsModel;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
+        }
+
+        private void DataGridFriends_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            UserModel chatModel = (UserModel)DataGridFriends.SelectedItem;
+
+            
+            WallFriend WindowProg = new WallFriend(chatModel.Id,_id);
+            WindowProg.Show();
+            this.Close();
 
         }
     }

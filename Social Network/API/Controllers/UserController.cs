@@ -47,13 +47,14 @@ namespace API.Controllers
                 return BadRequest();
         }
 
-        [HttpGet("getusers")]
-        public IActionResult GetUsers()
+        [HttpGet("getusers/{id}")]
+        public IActionResult GetUsers(int id)
         {
             List<UserModel> userModels = new List<UserModel>();
             foreach (var user in _context.Users.ToList())
             {
-
+                if (user.Id != id)
+                {
                     UserModel model = new UserModel()
                     {
                         Id = user.Id,
@@ -62,6 +63,7 @@ namespace API.Controllers
                         Password = user.Password
                     };
                     userModels.Add(model);
+                }
             }
             string json = JsonConvert.SerializeObject(userModels);
             return Content(json, "application/json");
