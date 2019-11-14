@@ -71,5 +71,15 @@ namespace UI
             WindowProg.Show();
             this.Close();
         }
+
+        private void PasswordTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PasswordTextBox.Text = "";
+        }
+
+        private void LoginTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoginTextBox.Text = "";
+        }
     }
 }

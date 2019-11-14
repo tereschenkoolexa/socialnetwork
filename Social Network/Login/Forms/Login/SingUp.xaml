@@ -33,12 +33,12 @@
         <Label Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="5" Background="DarkGray"/>
         <Label Grid.RowSpan="2" Grid.ColumnSpan="5" Background="Gray"/>
         <Label Grid.Column="2" Grid.Row="1" Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="White"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="Login" Foreground="White" Name="LoginTextBox"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Text="Password" Foreground="White" Name="PasswordTextBox"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Text="Name"  Foreground="White" Name="NameTextBox"/>
-        <TextBox Grid.Column="3" Grid.Row="2" Text="Age" Foreground="White" Name="AgeTextBox"/>
-        <TextBox Grid.Column="3" Grid.Row="3" Text="City" Foreground="White" Name="CityTextBox"/>
-        <TextBox Grid.Column="3" Grid.Row="4" Text="Country" Foreground="White" Name="CountryTextBox"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="Login" Foreground="White" Name="LoginTextBox" MouseDoubleClick="LoginTextBox_MouseDoubleClick"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Text="Password" Foreground="White" Name="PasswordTextBox" MouseDoubleClick="PasswordTextBox_MouseDoubleClick"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Text="Name"  Foreground="White" Name="NameTextBox" MouseDoubleClick="NameTextBox_MouseDoubleClick"/>
+        <TextBox Grid.Column="3" Grid.Row="2" Text="Age" Foreground="White" Name="AgeTextBox" MouseDoubleClick="AgeTextBox_MouseDoubleClick"/>
+        <TextBox Grid.Column="3" Grid.Row="3" Text="City" Foreground="White" Name="CityTextBox" MouseDoubleClick="CityTextBox_MouseDoubleClick"/>
+        <TextBox Grid.Column="3" Grid.Row="4" Text="Country" Foreground="White" Name="CountryTextBox" MouseDoubleClick="CountryTextBox_MouseDoubleClick"/>
         <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5" Content="Sign up" FontSize="20" Foreground="White" Background="Gray" Name="SignUpButton" Click="SignUpButton_Click"/>
         <Label Grid.Row="6" Grid.ColumnSpan="5" Background="Gray"/>
     </Grid>

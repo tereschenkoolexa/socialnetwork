@@ -77,5 +77,35 @@ namespace UI.Forms
             this.Close();
 
         }
+
+        private void LoginTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoginTextBox.Text = "";
+        }
+
+        private void PasswordTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PasswordTextBox.Text = "";
+        }
+
+        private void NameTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            NameTextBox.Text = "";
+        }
+
+        private void AgeTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            AgeTextBox.Text = "";
+        }
+
+        private void CityTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            CityTextBox.Text = "";
+        }
+
+        private void CountryTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            CountryTextBox.Text = "";
+        }
     }
 }

@@ -81,19 +81,21 @@ namespace API.Controllers
 
         }
 
-        [HttpPost("PostChat")]
-        public IActionResult PostChat([FromBody]ChatModel model)
+        [HttpPost("PostChat/{list}")]
+        public IActionResult PostChat([FromBody]ChatModel model, List<int> idUsers)
         {
 
-            _context.Add(new Chat
-            {
-                Name = model.Name
+            _context.Add
 
-            });
+
+
             _context.SaveChanges();
             return Ok();
 
         }
+
+
+
 
     }
 }

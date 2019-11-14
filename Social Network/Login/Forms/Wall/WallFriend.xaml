@@ -1,9 +1,8 @@
-﻿<Window x:Class="Login.Forms.Wall.WallFriend"
+﻿<Window x:Class="UI.WallFriend"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Login.Forms.Wall"
         mc:Ignorable="d"
         Title="WallFriend" Height="450" Width="800"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -32,6 +31,7 @@
         <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Message" Foreground="White" Name="ButtonMessage" Background="Gray" Click="ButtonMessage_Click"/>
         <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Friends" Foreground="White" Name="ButtonFriends" Background="Gray" Margin="0,118,0,0" Click="ButtonFriends_Click"/>
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Exit" Foreground="White" Name="ButtonExit" Background="Gray" Margin="0,125,0,55" Click="ButtonExit_Click" />
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Wall" Foreground="White" Name="ButtonWall" Background="Gray" Margin="0,31,0,157" Click="ButtonWall_Click"/>
         <Label Content="Shum" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White"/>
 
 

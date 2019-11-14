@@ -139,7 +139,7 @@ namespace UI
             }
             WebResponse wrNewWall = myRequest.GetResponse();
             await _hubConnection.InvokeAsync("sendAll", MesstextBox.Text);
-
+            MesstextBox.Text = "";
         }
 
 

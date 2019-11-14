@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UI;
 
-namespace Login.Forms.Wall
+namespace UI
 {
     /// <summary>
     /// Interaction logic for WallFriend.xaml
@@ -86,6 +86,13 @@ namespace Login.Forms.Wall
         private void ButtonFriends_Click(object sender, RoutedEventArgs e)
         {
             Friends WindowProg = new Friends(_idU);
+            WindowProg.Show();
+            this.Close();
+        }
+
+        private void ButtonWall_Click(object sender, RoutedEventArgs e)
+        {
+            Wall WindowProg = new Wall(_idU);
             WindowProg.Show();
             this.Close();
         }
