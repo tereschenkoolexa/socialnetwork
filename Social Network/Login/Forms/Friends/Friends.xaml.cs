@@ -62,5 +62,24 @@ namespace UI
             this.Close();
 
         }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonWall_Click(object sender, RoutedEventArgs e)
+        {
+            Wall WindowProg = new Wall(_id);
+            WindowProg.Show();
+            this.Close();
+        }
+
+        private void ButtonMessage_Click(object sender, RoutedEventArgs e)
+        {
+            Chat WindowProg = new Chat(_id);
+            WindowProg.Show();
+            this.Close();
+        }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UI;
 
 namespace Login.Forms.Wall
 {
@@ -23,12 +24,13 @@ namespace Login.Forms.Wall
     /// </summary>
     public partial class WallFriend : Window
     {
-        int id;
+        int id, _idU;
         public WallFriend(int idF, int idU)
         {
             InitializeComponent();
 
             id = idF;
+            _idU = idU;
             HttpWebRequest myRequestUser = WebRequest.CreateHttp($"https://localhost:44359/api/user/get/{id}");
             myRequestUser.Method = "GET";
             myRequestUser.ContentType = "application/json";
@@ -74,6 +76,25 @@ namespace Login.Forms.Wall
 
 
 
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonFriends_Click(object sender, RoutedEventArgs e)
+        {
+            Friends WindowProg = new Friends(_idU);
+            WindowProg.Show();
+            this.Close();
+        }
+
+        private void ButtonMessage_Click(object sender, RoutedEventArgs e)
+        {
+            Chat WindowProg = new Chat(_idU);
+            WindowProg.Show();
+            this.Close();
         }
     }
 }

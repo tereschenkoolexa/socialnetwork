@@ -50,6 +50,25 @@ namespace UI
 
         }
 
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonWall_Click(object sender, RoutedEventArgs e)
+        {
+            Wall WindowProg = new Wall(_idU);
+            WindowProg.Show();
+            this.Close();
+        }
+
+        private void ButtonFriends_Click(object sender, RoutedEventArgs e)
+        {
+            Friends WindowProg = new Friends(_idU);
+            WindowProg.Show();
+            this.Close();
+        }
+
         private void DataGridChats_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ChatModel chatModel = (ChatModel)DataGridChats.SelectedItem;
